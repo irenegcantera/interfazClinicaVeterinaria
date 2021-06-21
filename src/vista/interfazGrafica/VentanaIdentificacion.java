@@ -147,7 +147,7 @@ public class VentanaIdentificacion extends JFrame {
      */
     private void btnEntrarActionPerformed(ActionEvent evt) {   
     	
-    	String usuarioCorrecto = "susana";
+    	String usuarioCorrecto = "usuario";
     	String usuario = txtUsuario.getText();
     	if(usuario.isBlank()) {
     		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó el usuario","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
@@ -159,7 +159,7 @@ public class VentanaIdentificacion extends JFrame {
             return;
         }
     	
-    	char[] passwordCorrecta = new char[] {'s','u','s','a','n','a'};
+    	char[] passwordCorrecta = new char[] {'u','s','u','a','r','i','o'};
     	char[] password = txtPassword.getPassword();
     	if(password.length == 0) {
     		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó la contraseña","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
@@ -184,7 +184,7 @@ public class VentanaIdentificacion extends JFrame {
      * @param evt : evento de acción
      */
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {                                         
-    	javax.swing.JOptionPane.showMessageDialog(this,"Hola Susana, \nUsuario: susana\nContraseña: susana","Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    	javax.swing.JOptionPane.showMessageDialog(this,"Hola Usuario, \nUsuario: usuario\nContraseña: usuario","Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
