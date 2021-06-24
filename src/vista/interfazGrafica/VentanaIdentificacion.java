@@ -149,38 +149,43 @@ public class VentanaIdentificacion extends JFrame {
     	
     	String usuarioCorrecto = "usuario";
     	String usuario = txtUsuario.getText();
-    	if(usuario.isBlank()) {
-    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó el usuario","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-    		return;
-    	}else if(usuario.equals(usuarioCorrecto)) {
-        	javax.swing.JOptionPane.showMessageDialog(this,"Usuario correcto","Confirmación", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        }else {
-            javax.swing.JOptionPane.showMessageDialog(this,"Usuario incorrecto","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return;
-        }
     	
     	char[] passwordCorrecta = new char[] {'u','s','u','a','r','i','o'};
     	char[] password = txtPassword.getPassword();
-    	if(password.length == 0) {
-    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó la contraseña","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
-    		return;
-    	}else if(Arrays.equals(password, passwordCorrecta)) {
-        	javax.swing.JOptionPane.showMessageDialog(this,"Contraseña correcta","Confirmación", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        }else {
-        	javax.swing.JOptionPane.showMessageDialog(this,"Contraseña incorrecta","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        	return;
-        }
     	
-    	if(usuario.equals(usuarioCorrecto) && (Arrays.equals(password, passwordCorrecta))) {
-    		InterfazPrincipal ip = new InterfazPrincipal();
-        	ip.setVisible(true);
-        	this.setVisible(false);
+    	if(usuario.isBlank() && password.length == 0) {
+    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó el usuario ni la contraseña","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        	return;
+    	}else if(usuario.isBlank()) {
+    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó el usuario","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        	return;
+    	}else if(password.length == 0){
+    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó la contraseña","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+        	return;
+    	}else {
+    		if(usuario.equals(usuarioCorrecto) && Arrays.equals(password, passwordCorrecta)) {
+        		javax.swing.JOptionPane.showMessageDialog(this,"Usuario y contraseña correctos","Confirmación", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        		InterfazPrincipal ip = new InterfazPrincipal();
+            	ip.setVisible(true);
+            	this.setVisible(false);
+        	}else{
+        		if(!usuario.equals(usuarioCorrecto) && !Arrays.equals(password, passwordCorrecta)) {
+            		javax.swing.JOptionPane.showMessageDialog(this,"Usuario y contraseña incorrectos","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    return;
+        		}else if(!usuario.equals(usuarioCorrecto)) {
+        			javax.swing.JOptionPane.showMessageDialog(this,"Usuario incorrecto","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    return;
+        		}else if(!Arrays.equals(password, passwordCorrecta)) {
+        			javax.swing.JOptionPane.showMessageDialog(this,"Contraseña incorrecta","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    return;
+        		}
+        	}
     	}
     }                                        
     
     /**
-     * Este método hace visible un mensaje a Susana cuando se pulsa el botón btnHelp, da una
-     * pista de la contraseña y usuario de Susana.
+     * Este método hace visible un mensaje al usuario cuando se pulsa el botón btnHelp, da una
+     * pista de la contraseña y usuario.
      * @param evt : evento de acción
      */
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {                                         
