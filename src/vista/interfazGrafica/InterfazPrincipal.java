@@ -66,7 +66,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelBienvenido.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        labelBienvenido.setText("¡Bienvenida, Susana!");
+        labelBienvenido.setText("¡Bienvenido, Usuario!");
 
         menuInsertar.setText("Insertar");
 
