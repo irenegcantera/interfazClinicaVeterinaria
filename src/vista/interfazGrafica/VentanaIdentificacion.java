@@ -20,10 +20,10 @@ import javax.swing.WindowConstants;
 
 /**
  * Clase que hereda de un JFrame. Esta clase representa una ventana de inicio
- * que solicita un usuario y contraseña para acceder a la página principal
- * de la interfaz gráfica.
- * @author Irene González Cantera 
- * @version 1.5
+ * que solicita un usuario y contraseÃ±a para acceder a la pÃ¡gina principal
+ * de la interfaz grÃ¡fica.
+ * @author Irene GonzÃ¡lez Cantera 
+ * @version 1.5.3
  */
 @SuppressWarnings("serial")
 public class VentanaIdentificacion extends JFrame {
@@ -38,7 +38,7 @@ public class VentanaIdentificacion extends JFrame {
     }
 
     /**
-     * Este método es llamado en el constructor e incializará todos los 
+     * Este mÃ©todo es llamado en el constructor e incializarÃ¡ todos los 
      * componentes de la ventana (etiquetas, campo de texto, iconos, botones).                          
      */
     private void initComponents() {
@@ -48,6 +48,7 @@ public class VentanaIdentificacion extends JFrame {
         labelUsuario = new JLabel();
         labelPassword = new JLabel();
         btnEntrar = new JButton();
+        btnRegistrar = new JButton();
         iconHelp = new ImageIcon("images\\iconoHelp2.png");
         btnHelp = new JButton(iconHelp);
         labelIdentificacion = new JLabel();
@@ -56,21 +57,21 @@ public class VentanaIdentificacion extends JFrame {
     }
     
     /**
-     * Este método es llamado en el constructor y configura los componentes
-     * inicializados anteriormente. Configura las etiquetas, el título de la ventana y 
-     * añade icono.
-     * Los botones inicializan un evento que llama al método actionPerformed.
+     * Este mÃ©todo es llamado en el constructor y configura los componentes
+     * inicializados anteriormente. Configura las etiquetas, el tÃ­tulo de la ventana y 
+     * aÃ±ade icono.
+     * Los botones inicializan un evento que llama al mÃ©todo actionPerformed.
      */
     private void configuracionComponetes() {
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
-        setTitle("Clínica Veterinaria MegaMascotas");
+        setTitle("ClÃ­nica Veterinaria MegaMascotas");
         setIconImage(iconClinica.getImage());
 
         labelUsuario.setText("USUARIO");
 
-        labelPassword.setText("CONTRASEÑA");
+        labelPassword.setText("CONTRASEÃ‘A");
 
         btnEntrar.setText("ENTRAR");
         btnEntrar.addActionListener(new ActionListener() {
@@ -78,6 +79,8 @@ public class VentanaIdentificacion extends JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
+        
+        btnRegistrar.setText("REGISTRAR");
 
         btnHelp.setText("HELP");
         btnHelp.addActionListener(new ActionListener() {
@@ -87,7 +90,7 @@ public class VentanaIdentificacion extends JFrame {
         });
 
         labelIdentificacion.setFont(new Font("Tahoma", 1, 14)); // NOI18N
-        labelIdentificacion.setText("IDENTIFICACIÓN");
+        labelIdentificacion.setText("IDENTIFICACIÃ“N");
     }
     
     private void configuracionVentana() {
@@ -110,9 +113,10 @@ public class VentanaIdentificacion extends JFrame {
                                 .add(txtPassword, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, btnHelp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 96, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(btnEntrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(45, 45, 45)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    	.add(btnEntrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(29, 29, 29)))
+		                .add(btnRegistrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+		                .add(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -130,20 +134,21 @@ public class VentanaIdentificacion extends JFrame {
                     .add(txtPassword, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(labelPassword))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
-                .add(btnEntrar)
-                .add(28, 28, 28))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                		.add(btnEntrar)
+                        .add(btnRegistrar))
+                .add(45, 45, 45))
         );
-
         pack();
     }// </editor-fold>                        
 
     /**
-     * En este método se compara el usuario y contraseña introducidos por el trabajador con 
-     * aquellos que se encuentran registrados. Primero analiza el usuario y luego la contraseña. 
-     * Lanza mensajes según la situación.
-     * Por último, crea un objeto InterfazPrincipal que se configura visible cuando el usuario 
-     * son correctos y la contraseña.
-     * @param evt : evento de acción
+     * En este mÃ©todo se compara el usuario y contraseÃ±a introducidos por el trabajador con 
+     * aquellos que se encuentran registrados. Primero analiza el usuario y luego la contraseÃ±a. 
+     * Lanza mensajes segÃºn la situaciÃ³n.
+     * Por Ãºltimo, crea un objeto InterfazPrincipal que se configura visible cuando el usuario 
+     * son correctos y la contraseÃ±a.
+     * @param evt : evento de acciÃ³n
      */
     private void btnEntrarActionPerformed(ActionEvent evt) {   
     	
@@ -154,29 +159,29 @@ public class VentanaIdentificacion extends JFrame {
     	char[] password = txtPassword.getPassword();
     	
     	if(usuario.isBlank() && password.length == 0) {
-    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó el usuario ni la contraseña","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresÃ³ el usuario ni la contraseÃ±a","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         	return;
     	}else if(usuario.isBlank()) {
-    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó el usuario","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresÃ³ el usuario","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         	return;
     	}else if(password.length == 0){
-    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresó la contraseña","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
+    		javax.swing.JOptionPane.showMessageDialog(this,"No se ingresÃ³ la contraseÃ±a","Advertencia", javax.swing.JOptionPane.WARNING_MESSAGE);
         	return;
     	}else {
     		if(usuario.equals(usuarioCorrecto) && Arrays.equals(password, passwordCorrecta)) {
-        		javax.swing.JOptionPane.showMessageDialog(this,"Usuario y contraseña correctos","Confirmación", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        		javax.swing.JOptionPane.showMessageDialog(this,"Usuario y contraseÃ±a correctos","ConfirmaciÃ³n", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         		InterfazPrincipal ip = new InterfazPrincipal();
             	ip.setVisible(true);
             	this.setVisible(false);
         	}else{
         		if(!usuario.equals(usuarioCorrecto) && !Arrays.equals(password, passwordCorrecta)) {
-            		javax.swing.JOptionPane.showMessageDialog(this,"Usuario y contraseña incorrectos","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            		javax.swing.JOptionPane.showMessageDialog(this,"Usuario y contraseÃ±a incorrectos","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                     return;
         		}else if(!usuario.equals(usuarioCorrecto)) {
         			javax.swing.JOptionPane.showMessageDialog(this,"Usuario incorrecto","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                     return;
         		}else if(!Arrays.equals(password, passwordCorrecta)) {
-        			javax.swing.JOptionPane.showMessageDialog(this,"Contraseña incorrecta","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        			javax.swing.JOptionPane.showMessageDialog(this,"ContraseÃ±a incorrecta","Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                     return;
         		}
         	}
@@ -184,16 +189,16 @@ public class VentanaIdentificacion extends JFrame {
     }                                        
     
     /**
-     * Este método hace visible un mensaje al usuario cuando se pulsa el botón btnHelp, da una
-     * pista de la contraseña y usuario.
-     * @param evt : evento de acción
+     * Este mÃ©todo hace visible un mensaje al usuario cuando se pulsa el botÃ³n btnHelp, da una
+     * pista de la contraseÃ±a y usuario.
+     * @param evt : evento de acciÃ³n
      */
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {                                         
-    	javax.swing.JOptionPane.showMessageDialog(this,"Hola Usuario, \nUsuario: usuario\nContraseña: usuario","Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    	javax.swing.JOptionPane.showMessageDialog(this,"Hola Usuario, \nUsuario: usuario\nContraseÃ±a: usuario","InformaciÃ³n", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
-     * Método principal de la VentanaIdentificación.
+     * MÃ©todo principal de la VentanaIdentificaciÃ³n.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -230,6 +235,7 @@ public class VentanaIdentificacion extends JFrame {
 
     // Variables declaration - do not modify                     
     private JButton btnEntrar;
+    private JButton btnRegistrar;
     private JButton btnHelp;
     private JLabel labelUsuario;
     private JLabel labelPassword;
