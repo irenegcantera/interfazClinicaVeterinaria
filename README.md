@@ -16,7 +16,7 @@ This graphical interface is about a Veterinary Clinic where you can register sev
 * Swing
 * Eclipse 2021-03 or Apache Netbeans 12.0
 
-## Dependecies
+## Dependencies
 
 * appframework-1.0.3.jar
 * swing-layout-1.0.3.jar
