@@ -48,6 +48,7 @@ public class VentanaIdentificacion extends JFrame {
         labelUsuario = new JLabel();
         labelPassword = new JLabel();
         btnEntrar = new JButton();
+        btnRegistrar = new JButton();
         iconHelp = new ImageIcon("images\\iconoHelp2.png");
         btnHelp = new JButton(iconHelp);
         labelIdentificacion = new JLabel();
@@ -78,6 +79,8 @@ public class VentanaIdentificacion extends JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
+        
+        btnRegistrar.setText("REGISTRAR");
 
         btnHelp.setText("HELP");
         btnHelp.addActionListener(new ActionListener() {
@@ -110,9 +113,10 @@ public class VentanaIdentificacion extends JFrame {
                                 .add(txtPassword, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, btnHelp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 96, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(btnEntrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(45, 45, 45)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    	.add(btnEntrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(29, 29, 29)))
+		                .add(btnRegistrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+		                .add(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -130,10 +134,11 @@ public class VentanaIdentificacion extends JFrame {
                     .add(txtPassword, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(labelPassword))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
-                .add(btnEntrar)
-                .add(28, 28, 28))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                		.add(btnEntrar)
+                        .add(btnRegistrar))
+                .add(45, 45, 45))
         );
-
         pack();
     }// </editor-fold>                        
 
@@ -230,6 +235,7 @@ public class VentanaIdentificacion extends JFrame {
 
     // Variables declaration - do not modify                     
     private JButton btnEntrar;
+    private JButton btnRegistrar;
     private JButton btnHelp;
     private JLabel labelUsuario;
     private JLabel labelPassword;
