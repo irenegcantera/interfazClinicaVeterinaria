@@ -81,6 +81,11 @@ public class VentanaIdentificacion extends JFrame {
         });
         
         btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btnHelp.setText("HELP");
         btnHelp.addActionListener(new ActionListener() {
@@ -91,6 +96,8 @@ public class VentanaIdentificacion extends JFrame {
 
         labelIdentificacion.setFont(new Font("Tahoma", 1, 14)); // NOI18N
         labelIdentificacion.setText("IDENTIFICACIÓN");
+        
+        
     }
     
     private void configuracionVentana() {
@@ -195,6 +202,16 @@ public class VentanaIdentificacion extends JFrame {
      */
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {                                         
     	javax.swing.JOptionPane.showMessageDialog(this,"Hola Usuario, \nUsuario: usuario\nContraseña: usuario","Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /**
+     * Este método hace visible una ventana para registrar a un nuevo empleado cuando se pulsa 
+     * el botón btnRegistrar, la VentanaIdentificación se oculta.
+     * @param evt : evento de acción
+     */
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    	new VentanaRegistro();
+    	this.setVisible(false);
     }
 
     /**
