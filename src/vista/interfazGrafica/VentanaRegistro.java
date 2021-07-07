@@ -144,7 +144,6 @@ public class VentanaRegistro extends JFrame {
         setIconImage(iconClinica.getImage());
         
         accionesActivadas();
-        
 	}
 	
 	/**
@@ -156,14 +155,29 @@ public class VentanaRegistro extends JFrame {
 	        	 btnDarAltaActionPerformed(evt);
 	        }
 	    });
+		
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				btnCancelarActionPerformed(evt);
+			}
+		});
 	}
 	
 	/**
 	 * Este método mostrará un mensaje de bienvenido al dar alta a un nuevo empleado.
 	 * @param evt
 	 */
-	private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {                                         
+	private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {     
     	javax.swing.JOptionPane.showMessageDialog(this,"Bienvenido a Clínica Veterinaria MegaMascotas","Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    	new VentanaIdentificacion();
+    	this.setVisible(false);
+    }
+	
+	/**
+	 * Este método mostrará un mensaje de bienvenido al dar alta a un nuevo empleado.
+	 * @param evt
+	 */
+	private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                         
     	new VentanaIdentificacion();
     	this.setVisible(false);
     }
