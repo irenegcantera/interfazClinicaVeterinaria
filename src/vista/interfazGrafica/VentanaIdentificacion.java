@@ -17,6 +17,12 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Clase que hereda de un JFrame. Esta clase representa una ventana de inicio
@@ -42,18 +48,15 @@ public class VentanaIdentificacion extends JFrame {
      * componentes de la ventana (etiquetas, campo de texto, iconos, botones).                          
      */
     private void initComponents() {
-
         txtUsuario = new JTextField();
         txtPassword = new JPasswordField();
         labelUsuario = new JLabel();
         labelPassword = new JLabel();
         btnEntrar = new JButton();
-        btnRegistrar = new JButton();
         iconHelp = new ImageIcon("images\\iconoHelp2.png");
         btnHelp = new JButton(iconHelp);
         labelIdentificacion = new JLabel();
         iconClinica = new ImageIcon("images\\iconoCV.png");
-        
     }
     
     /**
@@ -79,13 +82,6 @@ public class VentanaIdentificacion extends JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
-        
-        btnRegistrar.setText("REGISTRAR");
-        btnRegistrar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
-            }
-        });
 
         btnHelp.setText("HELP");
         btnHelp.addActionListener(new ActionListener() {
@@ -97,55 +93,71 @@ public class VentanaIdentificacion extends JFrame {
         labelIdentificacion.setFont(new Font("Tahoma", 1, 14)); // NOI18N
         labelIdentificacion.setText("IDENTIFICACIÓN");
         
-        
+        labelRegistro = new JLabel("Clicar aqu\u00ED para comenzar registro");
+        labelRegistro.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		new VentanaRegistro();
+        		setVisible(false);
+        	}
+        });    
     }
     
     private void configuracionVentana() {
-    	org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(65, 65, 65)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(labelIdentificacion)
-                        .add(layout.createSequentialGroup()
-                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(labelUsuario)
-                                .add(labelPassword))
-                            .add(43, 43, 43)
-                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(txtUsuario, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(txtPassword, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnHelp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 96, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                    	.add(btnEntrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(29, 29, 29)))
-		                .add(btnRegistrar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-		                .add(33, 33, 33))
+        labelRegistro.setFont(new Font("Tahoma", Font.BOLD, 10));
+        labelRegistro.setForeground(new Color(32, 178, 170));
+        GroupLayout groupLayout = new GroupLayout(getContentPane());
+        groupLayout.setHorizontalGroup(
+        	groupLayout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addContainerGap(35, Short.MAX_VALUE)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addComponent(btnEntrar, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
+        							.addGap(14)
+        							.addComponent(btnHelp, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+        						.addComponent(labelIdentificacion)
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addComponent(labelUsuario, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
+        							.addGap(51)
+        							.addComponent(txtUsuario, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE))
+        						.addGroup(groupLayout.createSequentialGroup()
+        							.addComponent(labelPassword, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+        							.addGap(34)
+        							.addComponent(txtPassword, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)))
+        					.addGap(85))
+        				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+        					.addComponent(labelRegistro, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)
+        					.addGap(53))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(40, 40, 40)
-                .add(labelIdentificacion)
-                .add(18, 18, 18)
-                .add(btnHelp)
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtUsuario, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(labelUsuario))
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txtPassword, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(labelPassword))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                		.add(btnEntrar)
-                        .add(btnRegistrar))
-                .add(45, 45, 45))
+        groupLayout.setVerticalGroup(
+        	groupLayout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(groupLayout.createSequentialGroup()
+        			.addGap(40)
+        			.addComponent(labelIdentificacion, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGap(26)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(txtUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(3)
+        					.addComponent(labelUsuario)))
+        			.addGap(18)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(txtPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(groupLayout.createSequentialGroup()
+        					.addGap(3)
+        					.addComponent(labelPassword)))
+        			.addGap(18)
+        			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(btnEntrar)
+        				.addComponent(btnHelp))
+        			.addGap(18)
+        			.addComponent(labelRegistro)
+        			.addGap(16))
         );
+        getContentPane().setLayout(groupLayout);
         pack();
     }// </editor-fold>                        
 
@@ -203,16 +215,6 @@ public class VentanaIdentificacion extends JFrame {
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {                                         
     	javax.swing.JOptionPane.showMessageDialog(this,"Hola Usuario, \nUsuario: usuario\nContraseña: usuario","Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }
-    
-    /**
-     * Este método hace visible una ventana para registrar a un nuevo empleado cuando se pulsa 
-     * el botón btnRegistrar, la VentanaIdentificación se oculta.
-     * @param evt : evento de acción
-     */
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {                                         
-    	new VentanaRegistro();
-    	this.setVisible(false);
-    }
 
     /**
      * Método principal de la VentanaIdentificación.
@@ -252,7 +254,6 @@ public class VentanaIdentificacion extends JFrame {
 
     // Variables declaration - do not modify                     
     private JButton btnEntrar;
-    private JButton btnRegistrar;
     private JButton btnHelp;
     private JLabel labelUsuario;
     private JLabel labelPassword;
@@ -261,6 +262,5 @@ public class VentanaIdentificacion extends JFrame {
     private JTextField txtUsuario;
     private ImageIcon iconHelp;
     private ImageIcon iconClinica;
-    // End of variables declaration                   
-
+    private JLabel labelRegistro;
 }
